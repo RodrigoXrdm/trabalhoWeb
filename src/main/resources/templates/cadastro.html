@@ -1,0 +1,75 @@
+ <!DOCTYPE html>
+ <meta charset="utf-8">
+ <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+ <head>
+  <title>Loja do rodrigo</title>
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!--Import materialize.css-->
+  <link type="text/css" rel="stylesheet" href="css/materialize.css"  media="screen,projection"/>
+  <link rel="stylesheet" type="text/css" href="css/aux.css">
+
+  <!--Let browser know website is optimized for mobile-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <link rel="stylesheet" type="text/css" href="css/aux.css">
+
+</head>
+
+<body class="body grey lighten-3">
+
+ <header>
+
+  <nav>
+    <div class="nav-wrapper">      
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="index.html">Listar Produtos</a></li>       
+      </ul>
+    </div>
+  </nav>
+
+</header>
+
+<div class="container"> 
+  <form th:object="${produto}" th:action="@{/save}" method="POST">
+ <!--
+    <div class="row">
+     <div class="alert alert-danger" th:if="${#fields.hasAnyErrors()}">
+        <div th:each="detailedError : ${#fields.detailedErrors()}">
+          <span th:text="${detailedError.message}"></span>
+        </div>-->
+
+        <div style="height: 200px;">
+          
+        </div>
+
+        <div class="container">
+          <div class="col-md-1">
+            <input type="hidden" class="form-control input-sm" id="id" th:field="*{id}"></input>
+          </div>
+          <div class="col-md-4 input-field">
+            <label>Nome</label>
+            <input type="text" th:field="*{nome}" autofocus="autofocus" placeholder="Informe o nome" maxlength="50"></input>
+          </div>
+          <div class="col-md-4 input-field">
+            <label>Preço</label>
+            <input type="number" th:field="*{preco}" autofocus="autofocus" placeholder="Informe o preço" maxlength="50"></input>
+          </div><div>
+              <button type="submit" class="waves-effect waves-light btn right" >Salvar</button>
+              <a th:href="@{/}" class="btn btn-sm btn-default">Cancelar</a>
+          </div>   
+        </div>
+       
+      </form> 
+
+
+    </div>
+
+
+    <!--JavaScript at end of body for optimized loading-->
+
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+    <script type="text/javascript">M.AutoInit();</script>
+
+  </body>
+  </html>

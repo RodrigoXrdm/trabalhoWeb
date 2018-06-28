@@ -9,6 +9,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ufc.br.model.Produto;
@@ -21,7 +22,7 @@ public class produtoController {
 	private ProdutoService serv;
 	
 	
-	@GetMapping("/")
+	@RequestMapping("/")
 	public ModelAndView mostrarProdutos() {
 		
 		ModelAndView mv = new ModelAndView("index");
@@ -29,10 +30,10 @@ public class produtoController {
 		return mv;
 	}
 	
-	@GetMapping("cadastro")
-	public ModelAndView add(Produto prod) {
+	@RequestMapping("/cadastro")
+	public ModelAndView add(Produto produto) {
 		ModelAndView mv = new ModelAndView("cadastro");
-		mv.addObject("produto", prod);
+		mv.addObject("produto", produto);
 		return mv;
 	}
 	
@@ -41,13 +42,13 @@ public class produtoController {
 		serv.delete(id);
 		return mostrarProdutos();
 	}
-	@PostMapping
-	public ModelAndView criarprodruto(@Valid Produto prod, BindingResult tratar) {
+	@PostMapping("/save")
+	public ModelAndView criarprodruto(@Valid Produto produto, BindingResult tratar) {
 		if(tratar.hasErrors()) {
-			return add(prod);
+			return add(produto);
 			
 		}
-		serv.save(prod);
+		serv.save(produto);
 		return mostrarProdutos();
 	}
 }

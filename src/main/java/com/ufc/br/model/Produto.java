@@ -15,6 +15,10 @@ public class Produto {
 	private float preco;
 	private String imagem;
 	
+	
+	
+	public Produto() {}
+	
 	public Long getId() {
 		return id;
 	}
